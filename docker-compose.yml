@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  nginx:
+    restart: unless-stopped
+    image: nginx
+    container_name: HallOfFame_Root-Me 
+    volumes:
+      - ./site/:/usr/share/nginx/html
+    ports:
+      - "8082:80"
