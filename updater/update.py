@@ -20,7 +20,8 @@ def update_users(user):
     r2 = requests.get('https://www.root-me.org/'+ user['username'] + '?inc=statistiques')
     user['username'] = html.escape(user['username'])
 
-    regex = r'<h1 itemprop="givenName">.*<span .*?>(.*)</span></h1>'
+    #regex = r'<h1 itemprop="givenName">.*<span .*?>(.*)</span></h1>'
+    regex = r'<span class=" forum" >(.*)<\/span>&nbsp;'
     matches = re.search(regex, r.text)
     if matches:
         user['username_r'] = html.escape("{group}".format(group = matches.group(1)))
